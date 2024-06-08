@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Cài đặt các phụ thuộc
+pip install -r requirements.txt
+
+# Chạy dự án
+python main.py
+
+# Script
+cd đường_dẫn_đến_thư_mục_repo
+
+# Thay đổi quyền cho Script
+chmod +x run.sh
+
+#kiểm tra lại quyền của file để đảm bảo rằng script đã có quyền thực thi
+ls -l run.sh
+
+#Kết quả sẽ hiển thị chi tiết quyền của file. 
+Nếu bạn thấy ký tự "x" trong danh sách quyền, điều đó có nghĩa là file đã có quyền thực thi
+-rwxr-xr-x  1 user  group  123 Jun  8 12:34 run.sh

@@ -1,0 +1,32 @@
+# Sử dụng một image Python chính thức từ Docker Hub
+FROM python:3.9-slim
+
+# Thiết lập thư mục làm việc
+WORKDIR
+
+# Sao chép file requirements.txt vào thư mục làm việc
+COPY requirements.txt requirements.txt
+
+# Cài đặt các dependencies từ requirements.txt
+RUN pip install -r requirements.txt
+
+# Sao chép toàn bộ mã nguồn vào thư mục làm việc
+COPY Flask
+oauthlib
+requests
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+discord.py
+pandas
+gunicorn
+
+# Đặt biến môi trường cho Flask
+ENV FLASK_APP=app.py
+
+# Expose cổng mà ứng dụng Flask sẽ chạy
+EXPOSE 8000
+
+# Lệnh để khởi động ứng dụng
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app.py:app"]
